@@ -22,13 +22,12 @@
   <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
 
   <style>
-#clock {
-	color: aliceblue;
-        font-size: 2em;
-        font-weight: bold;
-        text-align: center;
+      /* style the time element */
+      time {
+        font-size: 1em;
+        color: rgb(255, 255, 255);
       }
-</style>
+    </style>
   
   
 </head>
@@ -41,7 +40,7 @@
         <div class="container-fluid">
             <div class="navbar-brand">
                 
-                <span class="navbar-caption-wrap"><a class="navbar-caption text-black text-primary display-7" href="index.html#header6-0"><div id="clock"></div>
+                <span class="navbar-caption-wrap"><a class="navbar-caption text-black text-primary display-7" href="index.html#header6-0"><p><font color="gray">OABS Network</font> <time id="clock"></time></p>
 </a></span>
             </div>
             
@@ -50,47 +49,33 @@
     </nav>
 </section>
 
-<section data-bs-version="5.1" class="image3 cid-tAOtglSrWk mbr-fullscreen" id="image3-3">
+<section data-bs-version="5.1" class="header18 cid-tAQRK2KCKr mbr-fullscreen" id="header18-8">
+
     
 
     
     
 
-    <div class="container">
+    <div class="align-center container-fluid">
         <div class="row justify-content-center">
-            <div class="col-12 col-lg-4">
-                <div class="image-wrapper">
-                    <img src="assets/images/om-500x500.png" alt="Mobirise Website Builder">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Tap to Play<br>
-
-<audio controls autoplay>
-      <source src="http://stream.zeno.fm/nfsmv73x0nhvv" type="audio/mpeg">
-      Your browser does not support the audio element.
-    </audio>
-
-
-
-</p>
-                </div>
+            <div class="col-12 col-lg-12">
+                <h1 class="mbr-section-title mbr-fonts-style mbr-white mb-3 display-1"><strong><script src="https://cdn.commoninja.com/sdk/latest/commonninja.js" defer></script>
+<div class="commonninja_component pid-be957659-ace1-420b-bf97-594a95d76bbd"></div></strong></h1>
+                
+                
+                
             </div>
         </div>
     </div>
 </section><script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>  <script src="assets/smoothscroll/smooth-scroll.js"></script>  <script src="assets/ytplayer/index.js"></script>  <script src="assets/dropdown/js/navbar-dropdown.js"></script>  <script src="assets/theme/js/script.js"></script>  
   
-<script>
-      function updateTime() {
-        var now = new Date();
-        var hours = now.getHours().toString().padStart(2, "0");
-        var minutes = now.getMinutes().toString().padStart(2, "0");
-        var seconds = now.getSeconds().toString().padStart(2, "0");
-        var timeString = hours + ":" + minutes + ":" + seconds;
-        document.getElementById("clock").textContent = timeString;
-      }
-
-      setInterval(updateTime, 1000); // update every second
+  <script>
+      // update the time every second
+      setInterval(function() {
+        var date = new Date();
+        var time = date.toLocaleTimeString();
+        document.getElementById("clock").textContent = time;
+      }, 1000);
     </script>
-
-
-  
 </body>
 </html>
