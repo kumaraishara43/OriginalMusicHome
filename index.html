@@ -1,7 +1,5 @@
 <!DOCTYPE html>
 <html>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <head>
     <style>
       iframe {
@@ -26,22 +24,143 @@
         justify-content: center;
         align-items: center;
       }
+
+      .offline-popup,
+.connected-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: none;
+  z-index: 999;
+}
+
+.offline-popup {
+  background-color: #ff5252;
+  color: #fff;
+  animation: slide-in 0.5s ease-in-out forwards;
+}
+
+.connected-popup {
+  background-color: #4caf50;
+  color: #fff;
+  animation: fade-in-out 0.5s ease-in-out forwards;
+}
+
+.offline-popup-content,
+.connected-popup-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.offline-popup-content h1,
+.connected-popup-content h1 {
+  font-size: 48px;
+  margin-bottom: 20px;
+}
+
+.offline-popup-content p,
+.connected-popup-content p {
+  font-size: 24px;
+  margin-bottom: 40px;
+}
+
+.online .connected-popup {
+  animation: fade-out 0.5s ease-in-out forwards;
+}
+
+@keyframes slide-in {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in-out {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-out {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+}
+
     </style>
   </head>
   <body>
-    <div id="overlay">
+    <div class="offline-popup">
+      <div class="offline-popup-content">
+        <h1>Disconnected from the server</h1>
+        <p>Trying to reconnect...</p>
+        
+        <p><img src="no.gif" width="50%" height="50%" /></p>
+
+      </div>
+    </div>
+    
+    <div class="connected-popup">
+      <div class="connected-popup-content">
+        <h1>Restarting</h1>
+        <p>Your internet connection is back.</p>
+        <p><img src="yes.gif" width="50%" height="50%" /></p>
+      </div>
+    </div>  <div id="overlay">
       <img src="Loading.gif" alt="loading spinner" />
     </div>
     <iframe id="myIframe" src="index1.html" frameborder="0" scrolling="no" style="display:none;"></iframe>
     <script>
+const offlinePopup = document.querySelector('.offline-popup');
+const connectedPopup = document.querySelector('.connected-popup');
+
+window.addEventListener('offline', function() {
+  offlinePopup.style.display = 'block';
+});
+
+window.addEventListener('online', function() {
+  connectedPopup.style.display = 'block';
+  setTimeout(function() {
+    connectedPopup.style.display = 'none';
+  }, 2000);
+  offlinePopup.style.display = 'none';
+});
+
+
+
+
+
+
       window.onload = function () {
-        setTimeout(removeOverlay, 5000);
+        setTimeout(removeOverlay, 6000);
       };
       function removeOverlay() {
         var overlay = document.getElementById("overlay");
         overlay.style.display = "none";
         document.getElementById("myIframe").style.display = "block";
       }
+
+      window.addEventListener('online', function() {
+  setTimeout(function() {
+    location.reload();
+  }, 2000);
+});
+
     </script>
   </body>
 </html>
