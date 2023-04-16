@@ -1,6 +1,28 @@
 <!DOCTYPE html>
 <html>
   <head>
+<script>
+
+
+      window.onload = function () {
+        setTimeout(removeOverlay, 6000);
+      };
+      function removeOverlay() {
+        var overlay = document.getElementById("overlay");
+        overlay.style.display = "none";
+        document.getElementById("myIframe").style.display = "block";
+      }
+
+      window.addEventListener('online', function() {
+  setTimeout(function() {
+    location.reload();
+  }, 2000);
+});
+
+</script>
+
+
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <style>
@@ -148,20 +170,6 @@ window.addEventListener('online', function() {
 
 
 
-      window.onload = function () {
-        setTimeout(removeOverlay, 6000);
-      };
-      function removeOverlay() {
-        var overlay = document.getElementById("overlay");
-        overlay.style.display = "none";
-        document.getElementById("myIframe").style.display = "block";
-      }
-
-      window.addEventListener('online', function() {
-  setTimeout(function() {
-    location.reload();
-  }, 2000);
-});
 
     </script>
   </body>
