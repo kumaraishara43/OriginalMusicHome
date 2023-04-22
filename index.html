@@ -3,15 +3,12 @@
   <head>
 <script>
 
+window.addEventListener('load', function() {
+  var loadingOverlay = document.getElementById('loading-overlay');
+  loadingOverlay.style.display = 'none';
+});
 
-      window.onload = function (removeOverlay)
-
-      function removeOverlay() {
-        var overlay = document.getElementById("overlay");
-        overlay.style.display = "none";
-        document.getElementById("myIframe").style.display = "block";
-      }
-
+      
       window.addEventListener('online', function() {
   setTimeout(function() {
     location.reload();
